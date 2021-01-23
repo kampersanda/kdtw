@@ -1,7 +1,11 @@
 # kdtw: Regularized Dynamic Time Warping Kernel
-This provides a (yet another) C++11 implementation of the [Regularized Dynamic Time Warping Kernel (KDTW)](https://people.irisa.fr/Pierre-Francois.Marteau/REDK/KDTW/KDTW.html) and its Python binding.
+This provides a (yet another) C++11 implementation of the [regularized dynamic time warping kernel (KDTW)](https://people.irisa.fr/Pierre-Francois.Marteau/REDK/KDTW/KDTW.html) and its Python binding.
 
-KDTW is also known as the Exponentiated Recursive Edit Distance Kernel (REDK) based on DTW, described in the paper: P-F. Marteau and S. Gibet, [On Recursive Edit Distance Kernels with Application to Time Series Classification](https://arxiv.org/abs/1005.5141), IEEE Transactions on Neural Networks and Learning Systems 26(6): 1121–1133, 2015.
+KDTW is also known as the exponentiated recursive edit distance kernel (REDK) on DTW, described in the paper: P-F. Marteau and S. Gibet, [On Recursive Edit Distance Kernels with Application to Time Series Classification](https://arxiv.org/abs/1005.5141), IEEE Transactions on Neural Networks and Learning Systems 26(6): 1121–1133, 2015.
+
+Our implementation does not apply the corridor technique as with [author's](https://people.irisa.fr/Pierre-Francois.Marteau/REDK/KDTW/KDTW.html#x1-90006).
+
+Note that the argument parameters follow definitions in [the original paper](https://arxiv.org/abs/1005.5141), not those in [author's HP](https://people.irisa.fr/Pierre-Francois.Marteau/REDK/KDTW/KDTW.html).
 
 ## How to install
 

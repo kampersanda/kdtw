@@ -28,4 +28,5 @@ NU = [0.01, 0.1, 1]  # stiffness parameter (ν')
 
 for nu in NU:
     # Compute the kernel value (in log)
-    print(f"K = {math.exp(pykdtw.log_KDTW(dist_mat, nu, C)):g}\t(ν' = {nu})")
+    log_K = pykdtw.log_KDTW(dist_mat, nu, C)
+    print(f"K = {math.exp(log_K):g}\t(ν' = {nu})")

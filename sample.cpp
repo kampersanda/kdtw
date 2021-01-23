@@ -35,8 +35,9 @@ int main() {
 
     for (double nu : NU) {
         // Compute the kernel value (in log)
-        std::cout << "K = " << std::exp(log_KDTW(dist_mat, nu, C))
-                  << "\t(ν' = " << nu << ")" << std::endl;
+        const double log_K = log_KDTW(dist_mat, nu, C);
+        std::cout << "K = " << std::exp(log_K) << "\t";
+        std::cout << "(ν' = " << nu << ")" << std::endl;
     }
 
     return 0;

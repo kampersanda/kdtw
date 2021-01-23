@@ -122,9 +122,8 @@ double log_RAfP2(const MatrixF64& dist_mat, const double nu, const double c) {
     };
     std::vector<double> prev_row(ncols + 1), curr_row(ncols + 1);
 
-    // 1st row
-    curr_row[0] =
-        0.0;  // The initial value 0.0 means C = 1.0, i.e., log(C) = 0.0
+    // 1st row (The initial value 0.0 means C = 1.0, i.e., log(C) = 0.0)
+    curr_row[0] = 0.0;
     for (int64_t j = 1; j <= ncols; j++) {
         curr_row[j] = curr_row[j - 1] + get(j, j);
     }
@@ -147,7 +146,10 @@ double log_RAfP2(const MatrixF64& dist_mat, const double nu, const double c) {
     return curr_row[ncols];
 }
 
-// Exponentiated REDK based on DTW (in log), i.e., returns log(K(A,B))
+// Compute KDTW (in log), i.e., returns log(KDTW(A,B))
+//  - 'dist_mat' is the distance matrix of sequences A and B
+//  - 'nu' is the stiffness parameters (ν')
+//  - 'c' is the non negative constant (typically 3)
 double log_KDTW(const MatrixF64& dist_mat, const double nu, const double c) {
     const int64_t nrows = dist_mat.nrows();
     const int64_t ncols = dist_mat.ncols();
