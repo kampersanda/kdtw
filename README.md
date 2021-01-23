@@ -3,9 +3,7 @@ This provides a (yet another) C++11 implementation of the [regularized dynamic t
 
 KDTW is also known as the exponentiated recursive edit distance kernel (REDK) on DTW, described in the paper: P-F. Marteau and S. Gibet, [On Recursive Edit Distance Kernels with Application to Time Series Classification](https://arxiv.org/abs/1005.5141), IEEE Transactions on Neural Networks and Learning Systems 26(6): 1121–1133, 2015.
 
-Our implementation does not apply the corridor technique as with [author's](https://people.irisa.fr/Pierre-Francois.Marteau/REDK/KDTW/KDTW.html#x1-90006).
-
-Note that the argument parameters follow definitions in [the original paper](https://arxiv.org/abs/1005.5141), not those in [author's HP](https://people.irisa.fr/Pierre-Francois.Marteau/REDK/KDTW/KDTW.html).
+Our implementation does not apply the corridor technique as with [author's](https://people.irisa.fr/Pierre-Francois.Marteau/REDK/KDTW/KDTW.html#x1-90006). Note that the argument parameters follow definitions in [the original paper](https://arxiv.org/abs/1005.5141), not those in [author's HP](https://people.irisa.fr/Pierre-Francois.Marteau/REDK/KDTW/KDTW.html).
 
 ## How to install
 
@@ -67,8 +65,9 @@ int main() {
 
     for (double nu : NU) {
         // Compute the kernel value (in log)
-        std::cout << "K = " << std::exp(log_KDTW(dist_mat, nu, C))
-                  << "\t(ν' = " << nu << ")" << std::endl;
+        const double log_K = log_KDTW(dist_mat, nu, C);
+        std::cout << "K = " << std::exp(log_K) << "\t";
+        std::cout << "(ν' = " << nu << ")" << std::endl;
     }
 
     return 0;
@@ -110,6 +109,7 @@ NU = [0.01, 0.1, 1]  # stiffness parameter (ν')
 
 for nu in NU:
     # Compute the kernel value (in log)
-    print(f"K = {math.exp(pykdtw.log_KDTW(dist_mat, nu, C)):g}\t(ν' = {nu})")
+    log_K = pykdtw.log_KDTW(dist_mat, nu, C)
+    print(f"K = {math.exp(log_K):g}\t(ν' = {nu})")
 ```
 
