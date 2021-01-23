@@ -18,7 +18,6 @@ int main() {
     }
 
     // Make the P \times Q distance matrix
-    // You can use dist_mat.resize(P,Q) not to reconstruct the matrix
     MatrixF64 dist_mat(P, Q);
     {
         for (int64_t i = 0; i < P; i++) {
@@ -27,6 +26,8 @@ int main() {
             }
         }
     }
+    // If you want to make another matrix, you can use dist_mat.resize(P,Q) not
+    // to reconstruct the matrix
 
     // Parameters for KDTW
     const double C = 3;  // non negative constant (typically 3)

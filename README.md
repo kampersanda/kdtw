@@ -46,7 +46,6 @@ int main() {
     }
 
     // Make the P \times Q distance matrix
-    // You can use dist_mat.resize(P,Q) not to reconstruct the matrix
     MatrixF64 dist_mat(P, Q);
     {
         for (int64_t i = 0; i < P; i++) {
@@ -55,6 +54,8 @@ int main() {
             }
         }
     }
+    // If you want to make another matrix, you can use dist_mat.resize(P,Q) not
+    // to reconstruct the matrix
 
     // Parameters for KDTW
     const double C = 3;  // non negative constant (typically 3)
@@ -91,11 +92,13 @@ A = [random.random() for _ in range(P)]
 B = [random.random() for _ in range(Q)]
 
 # Make the P \times Q distance matrix
-# You can use dist_mat.resize(P,Q) not to reconstruct the matrix
 dist_mat = pykdtw.MatrixF64(P, Q)
 for i, a in enumerate(A):
     for j, b in enumerate(B):
         dist_mat.set(i, j, abs(a - b))  # Lp norm
+
+# If you want to make another matrix, you can use
+# dist_mat.resize(P,Q) not to reconstruct the matrix
 
 # Parameters for KDTW
 C = 3  # non negative constant (typically 3)
